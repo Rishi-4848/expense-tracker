@@ -1,0 +1,33 @@
+.expenses-wrapper{
+  background-color:#9b9b9b;
+  /* width: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding:2rem 1rem;
+  border-radius: 20px;
+}
+
+.expenses-amount p,span{
+  background-color:#9b9b9b;
+  font-size: 32px;
+  font-weight: 600;
+  color:white;
+}
+
+.expenses-amount span{
+  color: #FF3838;
+}
+
+.expenses-btn{
+   padding:0.5rem 1rem;
+   background: linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%);
+
+   border: none;
+   outline: none;
+   font-size: 32px;
+   font-weight: 600;
+   border-radius: 20px;
+}

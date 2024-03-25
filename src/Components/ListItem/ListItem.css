@@ -1,0 +1,50 @@
+.listitem-wrapper{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 50vw;
+  background: white;
+  padding: 0.5rem 1rem;
+}
+
+.listitem-content{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: white;
+}
+
+.listitem-btns{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  background: white;
+}
+
+p{
+  background: white;
+  color: black;
+}
+
+.img-icons{
+  border-radius: 20px;
+  padding: 0.3rem;
+  font-size: 30px;
+}
+
+.category-icon{
+   background-color: rgb(160, 149, 149);
+}
+
+.delete-icon{
+ background-color: rgb(233, 52, 52);
+}
+
+.edit-icon{
+  background-color: rgb(228, 228, 69);
+}

@@ -1,0 +1,32 @@
+.wallet-wrapper{
+  background-color:#9b9b9b;
+  /* width: 300px; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+  padding:2rem 1rem;
+  border-radius: 20px;
+}
+
+.wallet-amount p,span{
+  background-color:#9b9b9b;
+  font-size: 32px;
+  font-weight: 600;
+  color:white;
+}
+
+.wallet-amount span{
+  color: #89E148;
+}
+
+.wallet-btn{
+   padding:0.5rem 1rem;
+   background: linear-gradient(90deg, #B5DC52 0%, #89E148 100%);
+   border: none;
+   outline: none;
+   font-size: 32px;
+   font-weight: 600;
+   border-radius: 20px;
+}
