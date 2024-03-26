@@ -4,7 +4,7 @@ import { CiPizza, CiGift } from "react-icons/ci";
 import { MdDelete } from "react-icons/md";
 import { CiEdit } from "react-icons/ci";
 
-const ListItem = () => {
+const ListItem = ({openModal}) => {
   return (
     <div className='listitem-wrapper'>
 
@@ -19,7 +19,7 @@ const ListItem = () => {
        <div className='listitem-btns'>
            <p>150</p>
       <MdDelete className='img-icons delete-icon'/>
-      <CiEdit className='img-icons edit-icon'/>
+      <CiEdit className='img-icons edit-icon' onClick={openModal}/>
        </div>
     </div>
   );

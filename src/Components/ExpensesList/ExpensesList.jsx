@@ -1,16 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./ExpensesList.css"
 import { CiPizza, CiGift } from "react-icons/ci";
 import { FaPersonWalkingLuggage } from "react-icons/fa6";
 import ListItem from '../ListItem/ListItem';
 
-const ExpensesList = () => {
+const ExpensesList = ({openModal}) => {
+  
+
+
   return (
     <div className='expensesList-wrapper'>
       <h1>Recent Transactions :</h1>
 
       <div className='expensesList-list'>
-         <ListItem/>
+         <ListItem openModal={openModal}/>
          <ListItem/>
          <ListItem/>
          <ListItem/>

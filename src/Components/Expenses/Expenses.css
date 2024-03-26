@@ -24,7 +24,7 @@
 .expenses-btn{
    padding:0.5rem 1rem;
    background: linear-gradient(90deg, #FF9595 0%, #FF4747 80%, #FF3838 100%);
-
+   color:white;
    border: none;
    outline: none;
    font-size: 32px;

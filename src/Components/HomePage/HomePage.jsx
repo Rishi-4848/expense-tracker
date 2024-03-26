@@ -1,27 +1,65 @@
-import React from 'react';
+import React, { useState } from 'react';
 import "./HomePage.css"
 import Wallet from '../Wallet/Wallet';
 import Expenses from '../Expenses/Expenses';
 import Piechart from '../Piechart/Piechart';
 import ExpensesList from '../ExpensesList/ExpensesList';
 import Barchart from '../Barchart/Barchart';
+import ExpenseModal from '../ExpenseModal/ExpenseModal';
+import WalletModal from '../WalletModal/WalletModal';
+import EditModal from '../EditModal/EditModal';
 
 const HomePage = () => {
+
+  const [isExpenseModalOpen,setIsExpenseModalOpen] = useState(false)
+  const [isWallletModalOpen,setIsWalletModalOpen] = useState(false)
+  const [isEditModalOpen,setIsEditModalOpen] = useState(false)
+
+  const closeEditModal =()=>{
+    setIsEditModalOpen(false)
+   }
+
+   const openEditModal = ()=>{
+    setIsEditModalOpen(true)
+   }
+
+
+  const closeExpenseModal =()=>{
+    setIsExpenseModalOpen(false)
+   }
+
+   const openExpenseModal = ()=>{
+    setIsExpenseModalOpen(true)
+   }
+
+   const closeWalletModal =()=>{
+    setIsWalletModalOpen(false)
+   }
+
+   const openWalletModal = ()=>{
+    setIsWalletModalOpen(true)
+   }
+
+
   return (
     <div className='homepage-wrapper'>
 
       <h1>Expense Tracker</h1>
 
      <div className='homepage-header'>
-     <Wallet/>
-     <Expenses/>
+     <Wallet openModal={openWalletModal}/>
+     <Expenses openModal={openExpenseModal}/>
      <Piechart/>
      </div>
 
      <div className='homepage-footer'>
-   <ExpensesList/>
+   <ExpensesList openModal={openEditModal}/>
    <Barchart/>
      </div>
+
+     <ExpenseModal isOpen={isExpenseModalOpen} isClose={closeExpenseModal}/>
+     <WalletModal isOpen={isWallletModalOpen} isClose={closeWalletModal}/>
+     <EditModal isOpen={isEditModalOpen} isClose={closeEditModal}/>
     </div>
   );
 }
