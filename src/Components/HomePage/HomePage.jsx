@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import "./HomePage.css"
 import Wallet from '../Wallet/Wallet';
 import Expenses from '../Expenses/Expenses';
@@ -14,6 +14,25 @@ const HomePage = () => {
   const [isExpenseModalOpen,setIsExpenseModalOpen] = useState(false)
   const [isWallletModalOpen,setIsWalletModalOpen] = useState(false)
   const [isEditModalOpen,setIsEditModalOpen] = useState(false)
+  const initialWalletAmount = 5000;
+  const expenseList = []
+  const expenseAmount = 0
+
+  useEffect(()=>{
+
+    if(localStorage.getItem("walletAmount")===null){
+      localStorage.setItem("walletAmount",initialWalletAmount)
+    }
+
+    if(localStorage.getItem("expenseList")===null){
+       localStorage.setItem("expenseList",JSON.stringify(expenseList))
+    }
+
+    if(localStorage.getItem("expenseAmount")=== null){
+      localStorage.setItem("expenseAmount",expenseAmount)
+    }
+  },[])
+ 
 
   const closeEditModal =()=>{
     setIsEditModalOpen(false)

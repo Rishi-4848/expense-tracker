@@ -6,20 +6,63 @@ Modal.setAppElement("#root")
 
 const ExpenseModal = ({isOpen,isClose}) => {
 
+ 
  const [expenseData,setExpenseData] = useState({
    title:"",
-   price:"",
-   category:"",
+   price:0,
+   category:"food",
    date:"",
  })
+
 
  const changeHandler = (e)=>{
   setExpenseData({...expenseData,[e.target.name]:e.target.value})
  }
 
 
+ const walletAmountHandler = ()=>{
+
+  let WalletAmount = Number(localStorage.getItem("walletAmount"))
+  let usedAmount = expenseData.price
+  let newWalletAmount = WalletAmount - usedAmount
+  
+  localStorage.setItem("walletAmount",newWalletAmount)
+ }
+
+
+ const expenseAmountHandler = ()=>{
+
+  let usedAmount = expenseData.price
+  let expenseAmount =Number(localStorage.getItem("expenseAmount"))
+  let newExpenseAmount = expenseAmount+Number(usedAmount)
+
+  localStorage.setItem("expenseAmount",newExpenseAmount)
+ }
+
+
+ const expenseListHandler = ()=>{
+  let expenseList = JSON.parse(localStorage.getItem("expenseList"))
+  let newExpenseList = [...expenseList,expenseData]
+
+  localStorage.setItem("expenseList",JSON.stringify(newExpenseList))
+ }
+
+
+
  const addProduct=()=>{
-  console.log(expenseData)
+   
+  expenseListHandler()
+  expenseAmountHandler()
+  walletAmountHandler()
+
+   setExpenseData({
+    title:"",
+    price:0,
+    category:"food",
+    date:"",
+  })
+
+   isClose()
  }
 
 
@@ -42,7 +85,7 @@ const ExpenseModal = ({isOpen,isClose}) => {
           <input type="date" name="date" value={expenseData.date}  onChange={changeHandler}/>
          </div>
          <div className='expense-input-btns'>
-          <button className='add-btn' onClick={addProduct}>Add Expense</button>
+          <button className='add-expense-btn' onClick={addProduct}>Add Expense</button>
           <button onClick={isClose}>Cancel</button>
          </div>
       </div>

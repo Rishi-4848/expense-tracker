@@ -63,7 +63,7 @@ linear-gradient(0deg, #D9D9D9, #D9D9D9),
 linear-gradient(0deg, #FBFBFB, #FBFBFB);
 }
 
-.expense-input-btns button{
+ button{
   box-shadow: 5px 5px 5px 2px rgb(180, 167, 167);
   font-size: 20px;
   border: none;
@@ -104,7 +104,7 @@ linear-gradient(0deg, #FBFBFB, #FBFBFB);
   gap: 20px;
 }
 
-.add-btn{
+.add-expense-btn{
   background: linear-gradient(0deg, #F4BB4A, #F4BB4A);
   color: white;
 }

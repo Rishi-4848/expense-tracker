@@ -15,7 +15,11 @@ const WalletModal = ({isOpen,isClose}) => {
    }
 
    const AddAmount = ()=>{
-     console.log(walletAmount)
+    let oldAmountStr = localStorage.getItem("walletAmount")
+    let newAmount = Number(oldAmountStr) + Number(walletAmount)
+    localStorage.setItem("walletAmount",newAmount)
+
+    isClose()
    }
 
   return (
