@@ -41,7 +41,8 @@ const Piechart = ({list}) => {
   labels: data.map((item)=> item.category),
   datasets:[{
     label : "money spent",
-    data: data.map((item)=> item.price)
+    data: data.map((item)=> item.price),
+    backgroundColor:["orange","yellow","green"],
   }]
 })
 

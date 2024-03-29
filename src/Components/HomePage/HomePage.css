@@ -2,6 +2,7 @@
 .homepage-wrapper{
    display: flex;
    flex-direction: column;
+ 
    gap: 30px;
 }
 
@@ -25,3 +26,29 @@
   padding: 1.5rem 1rem;
   margin: 0 1.5rem;
 }
+
+.bar-container{
+  width: 500px;
+}
+
+
+@media screen and (max-width:1100px) {
+
+  .homepage-wrapper{
+    align-items: center;
+  }
+
+  .homepage-header{
+    flex-direction: column;
+    gap: 40px;
+    width:80vw;
+  }
+
+  .homepage-footer{
+    flex-direction: column;
+    gap: 40px;
+    width: max-content;
+  }
+}
+
+

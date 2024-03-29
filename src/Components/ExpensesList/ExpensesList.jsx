@@ -48,7 +48,10 @@ const handlePrevPage = ()=>{
       <div className='expensesList-list'>
       {list.length !==0 ? (   
           list.slice(startIndex,endIndex).map((expense,i)=>(  
+            <>
               <ListItem key={i}  openModal={openModal} expense={expense} setEditExpenseInfo={setEditExpenseInfo} setList={setList} setExpense={setExpense} setWallet={setWallet}/>
+              <hr />
+              </>
           ))
       ):(<div className='expensesList-nolist'>Add New Expenses ...!</div>)}
       </div>

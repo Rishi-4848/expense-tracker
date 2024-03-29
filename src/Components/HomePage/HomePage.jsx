@@ -99,7 +99,7 @@ useEffect(()=>{
      <Wallet openModal={openWalletModal} setWallet={setWallet} wallet={wallet}/>
      <Expenses expense={expense} setExpense={setExpense} openModal={openExpenseModal} setWallet={setWallet}/>
 
-     <div style={{width:250, height:250,backgroundColor:"white"}}>
+     <div style={{width:250, height:250}}>
      <Piechart list={list}/>
      </div>
     
@@ -107,7 +107,7 @@ useEffect(()=>{
 
      <div className='homepage-footer'>
    <ExpensesList openModal={openEditModal} setExpense={setExpense} setEditExpenseInfo={setEditExpenseInfo} list={list} setList={setList} setWallet={setWallet}/>
-    <div style={{width:500,backgroundColor:"white"}}>
+    <div className='bar-container' >
     <Barchart list={list}/>
     </div>
    

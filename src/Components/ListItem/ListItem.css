@@ -3,7 +3,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  width: 50vw;
+  width: 35vw;
   background: white;
   padding: 1rem 1.5rem;
 }
@@ -35,6 +35,7 @@ p{
   border-radius: 20px;
   padding: 0.3rem;
   font-size: 30px;
+  cursor: pointer;
 }
 
 .category-icon{
@@ -56,4 +57,16 @@ p{
 
 .listitem-details p{
   background-color: white;
+}
+
+@media screen and (max-width:1000px) {
+   .listitem-wrapper{
+    width:80vw;
+   }
+}
+
+@media screen and (max-width:400px) {
+   .listitem-wrapper{
+    flex-direction: column;
+   }
 }
