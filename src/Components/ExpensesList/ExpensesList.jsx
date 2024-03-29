@@ -11,7 +11,15 @@ const itemsPerPage =3
 
 let expenseList = JSON.parse(localStorage.getItem("expenseList"))
 
-const totalPages = expenseList.length <=2 ? 1 : Math.ceil(expenseList.length/itemsPerPage)
+let totalPages
+
+if(expenseList===null){
+  totalPages =0
+}else{
+  totalPages = expenseList.length <=2  ? 1 : Math.ceil(expenseList.length/itemsPerPage)
+}
+
+
 
 const startIndex = (currentPage-1)*itemsPerPage
 

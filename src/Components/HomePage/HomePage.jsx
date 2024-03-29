@@ -22,7 +22,7 @@ const HomePage = () => {
   
   const [wallet,setWallet] = useState(walletAmount===0? initialWalletAmount:walletAmount)
   const [expense,setExpense] = useState(expenseAmount)
-  const [list,setList] = useState(expenseList.lenth===0 ? initialexpenseList : expenseList)
+  const [list,setList] = useState(expenseList===null ? initialexpenseList : expenseList)
   const [isExpenseModalOpen,setIsExpenseModalOpen] = useState(false)
   const [isWallletModalOpen,setIsWalletModalOpen] = useState(false)
   const [isEditModalOpen,setIsEditModalOpen] = useState(false)
