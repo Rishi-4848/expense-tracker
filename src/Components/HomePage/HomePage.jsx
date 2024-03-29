@@ -9,14 +9,26 @@ import ExpenseModal from '../ExpenseModal/ExpenseModal';
 import WalletModal from '../WalletModal/WalletModal';
 import EditModal from '../EditModal/EditModal';
 
+
 const HomePage = () => {
 
+  const initialWalletAmount = 5000;
+  const initialexpenseList = []
+  const initialexpenseAmount = 0
+
+  let walletAmount = Number(localStorage.getItem("walletAmount"))
+  let expenseAmount = Number(localStorage.getItem("expenseAmount"))
+  let expenseList = JSON.parse(localStorage.getItem("expenseList"))
+  
+  const [wallet,setWallet] = useState(walletAmount===0? initialWalletAmount:walletAmount)
+  const [expense,setExpense] = useState(expenseAmount)
+  const [list,setList] = useState(expenseList.lenth===0 ? initialexpenseList : expenseList)
   const [isExpenseModalOpen,setIsExpenseModalOpen] = useState(false)
   const [isWallletModalOpen,setIsWalletModalOpen] = useState(false)
   const [isEditModalOpen,setIsEditModalOpen] = useState(false)
-  const initialWalletAmount = 5000;
-  const expenseList = []
-  const expenseAmount = 0
+  const [editExpenseInfo,setEditExpenseInfo] = useState(null)
+
+
 
   useEffect(()=>{
 
@@ -25,13 +37,31 @@ const HomePage = () => {
     }
 
     if(localStorage.getItem("expenseList")===null){
-       localStorage.setItem("expenseList",JSON.stringify(expenseList))
+       localStorage.setItem("expenseList",JSON.stringify(initialexpenseList))
     }
 
     if(localStorage.getItem("expenseAmount")=== null){
-      localStorage.setItem("expenseAmount",expenseAmount)
+      localStorage.setItem("expenseAmount",initialexpenseAmount)
     }
+
   },[])
+
+
+
+
+
+
+useEffect(()=>{
+  localStorage.setItem("walletAmount",wallet)
+},[wallet])
+
+  useEffect(()=>{
+    localStorage.setItem("expenseAmount",expense)
+  },[expense])
+
+  useEffect(()=>{
+    localStorage.setItem("expenseList",JSON.stringify(list))
+ },[list])
  
 
   const closeEditModal =()=>{
@@ -66,19 +96,27 @@ const HomePage = () => {
       <h1>Expense Tracker</h1>
 
      <div className='homepage-header'>
-     <Wallet openModal={openWalletModal}/>
-     <Expenses openModal={openExpenseModal}/>
-     <Piechart/>
+     <Wallet openModal={openWalletModal} setWallet={setWallet} wallet={wallet}/>
+     <Expenses expense={expense} setExpense={setExpense} openModal={openExpenseModal} setWallet={setWallet}/>
+
+     <div style={{width:250, height:250,backgroundColor:"white"}}>
+     <Piechart list={list}/>
+     </div>
+    
      </div>
 
      <div className='homepage-footer'>
-   <ExpensesList openModal={openEditModal}/>
-   <Barchart/>
+   <ExpensesList openModal={openEditModal} setExpense={setExpense} setEditExpenseInfo={setEditExpenseInfo} list={list} setList={setList} setWallet={setWallet}/>
+    <div style={{width:500,backgroundColor:"white"}}>
+    <Barchart list={list}/>
+    </div>
+   
      </div>
 
-     <ExpenseModal isOpen={isExpenseModalOpen} isClose={closeExpenseModal}/>
-     <WalletModal isOpen={isWallletModalOpen} isClose={closeWalletModal}/>
-     <EditModal isOpen={isEditModalOpen} isClose={closeEditModal}/>
+     <ExpenseModal isOpen={isExpenseModalOpen} isClose={closeExpenseModal} setExpense={setExpense} setWallet={setWallet} setList={setList}/>
+     <WalletModal isOpen={isWallletModalOpen} isClose={closeWalletModal} setWallet={setWallet}/>
+     {isEditModalOpen && <EditModal isOpen={isEditModalOpen} isClose={closeEditModal} setExpense={setExpense} editExpenseInfo={editExpenseInfo} setWallet={setWallet} setList={setList}/>}
+     
     </div>
   );
 }

@@ -1,6 +1,7 @@
 .expensesList-wrapper{
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 
@@ -9,4 +10,19 @@
   background-color: white;
   padding: 1rem;
   border-radius: 30px;
+}
+
+.expensesList-nolist{
+  background-color: white;
+  padding: 1rem;
+  font-size: 24px;
+  font-weight: 500;
+  color: black;
+}
+
+.page-btns{
+  background-color: chocolate;
+  color: chocolate ;
+  font-size: 24px;
+  cursor: pointer;
 }

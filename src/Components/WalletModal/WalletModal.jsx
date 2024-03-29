@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import "./WalletModal.css"
 import Modal from "react-modal"
+import { enqueueSnackbar } from 'notistack';
 
 Modal.setAppElement("#root")
 
-const WalletModal = ({isOpen,isClose}) => {
+const WalletModal = ({isOpen,isClose,setWallet}) => {
 
 
    const [walletAmount,setWalletAmount] = useState(0)
@@ -17,8 +18,11 @@ const WalletModal = ({isOpen,isClose}) => {
    const AddAmount = ()=>{
     let oldAmountStr = localStorage.getItem("walletAmount")
     let newAmount = Number(oldAmountStr) + Number(walletAmount)
-    localStorage.setItem("walletAmount",newAmount)
+    setWallet(newAmount)
 
+      const message = `wallet top up succesfully of ${walletAmount}`
+    enqueueSnackbar(message,{variant:"success"})
+    
     isClose()
    }
 

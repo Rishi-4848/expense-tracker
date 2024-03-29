@@ -1,19 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import "./Wallet.css"
 
-const Wallet = ({openModal}) => {
-
-  const [wallet,setWallet] = useState(0)
-
-  let wallletAmount = localStorage.getItem("walletAmount") 
-
-  useEffect(()=>{
-    let wallletAmountstr = localStorage.getItem("walletAmount") 
-
-    let walletAmount = Number(wallletAmountstr)
-    setWallet(walletAmount)
-  },[wallletAmount])
-
+const Wallet = ({openModal,wallet}) => {
 
 
   return (

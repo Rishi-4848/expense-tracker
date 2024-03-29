@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import "./Expenses.css"
 
-const Expenses = ({openModal}) => {
+const Expenses = ({openModal,expense,setExpense}) => {
 
- const [expense,setExpense] = useState(0)
-
-  let expenseAmount = localStorage.getItem("expenseAmount")
+  
 
   useEffect(()=>{
-    let newExpenseAmount = JSON.parse(localStorage.getItem("expenseAmount"))
+    let newExpenseAmount = Number(localStorage.getItem("expenseAmount")) 
     setExpense(newExpenseAmount)
-  },[expenseAmount])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
 
   return (
     <div className='expenses-wrapper'>

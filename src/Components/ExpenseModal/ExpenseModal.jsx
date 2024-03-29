@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import "./ExpenseModal.css"
 import Modal from "react-modal"
+import { enqueueSnackbar } from 'notistack';
 
 Modal.setAppElement("#root")
 
-const ExpenseModal = ({isOpen,isClose}) => {
+const ExpenseModal = ({isOpen,isClose,setExpense,setList,setWallet}) => {
 
  
  const [expenseData,setExpenseData] = useState({
@@ -25,35 +26,53 @@ const ExpenseModal = ({isOpen,isClose}) => {
   let WalletAmount = Number(localStorage.getItem("walletAmount"))
   let usedAmount = expenseData.price
   let newWalletAmount = WalletAmount - usedAmount
-  
-  localStorage.setItem("walletAmount",newWalletAmount)
+  setWallet(newWalletAmount)
+ 
+ }
+
+ const expenseListHandler = ()=>{
+  let expenseList = JSON.parse(localStorage.getItem("expenseList"))
+  let newExpenseList = [...expenseList,expenseData]
+
+  setList(newExpenseList)
+
+    
+  const message = "new expense added successfully "
+  enqueueSnackbar(message,{variant:"success"})
  }
 
 
  const expenseAmountHandler = ()=>{
 
   let usedAmount = expenseData.price
+  let WalletAmount = Number(localStorage.getItem("walletAmount"))
+
+
+  if(usedAmount > WalletAmount){
+    const message = "expense amount cant be more than wallet amount. So upgrade your wallet amount"
+     enqueueSnackbar(message,{variant:"error"})
+  }else{
+
+    
   let expenseAmount =Number(localStorage.getItem("expenseAmount"))
   let newExpenseAmount = expenseAmount+Number(usedAmount)
+  
+  setExpense(newExpenseAmount)
+  walletAmountHandler()
+  expenseListHandler()
 
-  localStorage.setItem("expenseAmount",newExpenseAmount)
+  }
+
  }
 
 
- const expenseListHandler = ()=>{
-  let expenseList = JSON.parse(localStorage.getItem("expenseList"))
-  let newExpenseList = [...expenseList,expenseData]
 
-  localStorage.setItem("expenseList",JSON.stringify(newExpenseList))
- }
 
 
 
  const addProduct=()=>{
    
-  expenseListHandler()
   expenseAmountHandler()
-  walletAmountHandler()
 
    setExpenseData({
     title:"",
